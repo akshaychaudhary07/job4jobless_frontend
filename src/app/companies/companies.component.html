@@ -1,0 +1,75 @@
+<div class="container" style="margin-top: 30px;">
+    <h1>Find great places to work</h1>
+  </div>
+  
+  <div class="container ">
+    <h3>Get access to millions of company reviews</h3>
+  </div>
+  
+  <div class="container my-2">
+    <div class="row">
+      <div class="col-md-7">
+        <form (ngSubmit)="searchCompanies()">
+          <div class="form-group">
+            <label for="cnoj">
+              <h3>Company name</h3>
+            </label>
+            <input type="text" id="cnoj" name="cnoj" placeholder="Search Companies"
+              class="rounded-pill my-4 mx-2 px-4 py-3 w-100  custom-outline" [(ngModel)]="searchTerm">
+  
+          </div>
+        </form>
+      </div>
+      <div class="col-md-2" style="margin-top: 20px;">
+        <button type="button" class="btn custom-btn rounded-pill my-5 px-4 py-3 shadow-lg mx-1 findjobbtn"
+          (click)="searchCompanies()">Find Companies</button>
+      </div>
+    </div>
+  </div>
+  
+  
+  
+  <div class="container" style="margin-top: 20px; margin-bottom: 10px;">
+    <div *ngIf="isLoading" class="text-center mt-5">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+    <h3 class="mb-3" style="font-size: 2.5rem; color: black;">Popular companies</h3>
+    <div class="row">
+      <div class="col-md-4 col-sm-6 mb-4" *ngFor="let job of filteredJobs">
+        <div class="card card-hover">
+          <!-- <img src="assets/Job4jobless & Hustleforwork-01.png" class="card-img-top img-small" alt="Company Logo"> -->
+          <div class="card-body">
+            <h1 class="card-title"><strong>{{ job.employer.empfname }} {{ job.employer.emplname }}</strong></h1>
+            <h2 class="card-text"><strong>{{ job.employer.empcompany }}</strong></h2>
+            <div class="ratings">
+              <!-- Your rating stars here -->
+            </div>
+            <div class="row">
+              <div class="d-flex justify-content-center">
+                <button class="btn btn-secondary"  routerLink="/login">
+                  {{ job.follow ? 'Unfollow' : 'Follow' }}
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="container">
+      <div class="row justify-content-center mt-4 mb-4">
+        <div class="col-md-6">
+          <div class="pagination justify-content-center">
+            <button class="btn buttons rounded-pill mt-3 mb-3" (click)="onPageChange(currentPage - 1)"
+              [disabled]="currentPage === 1"><i class="fas fa-arrow-left"></i>&nbsp;Previous</button>
+            &nbsp;
+            <button class="btn buttons rounded-pill mt-3 mb-3" (click)="onPageChange(currentPage + 1)"
+              [disabled]="currentPage === totalPages">Next <i class="fas fa-arrow-right"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-footer></app-footer>

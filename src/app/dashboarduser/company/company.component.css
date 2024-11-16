@@ -1,0 +1,64 @@
+.custom-btn {
+    color: black;
+    background-color: #1e2e5c41;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bolder;
+    border: 2px solid #1E2E5C;
+}
+
+.buttons {
+    color: white;
+    background-color: #1e2e5c;
+}
+
+/* Adjust card size and appearance */
+.card {
+    height: 450px;
+    /* Set a fixed height */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card img {
+    height: 150px;
+    /* Fixed height for image */
+    object-fit: cover;
+    /* Ensures image fits within the specified height */
+}
+
+.card .card-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+    /* Prevents content from overflowing */
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.card-title,
+.card-text,
+.ratings,
+button {
+    text-align: center;
+    /* Center aligns text and button */
+}
+
+.btn-secondary {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.img-small {
+    /* width: auto;
+    max-width: 80px; */
+    height: 8px;
+    padding: 5% 5%;
+}

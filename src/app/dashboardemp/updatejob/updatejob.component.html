@@ -1,0 +1,317 @@
+
+<div class="container text-center">
+  <h1>Edit Job</h1>
+  <form [formGroup]="jobForm" (ngSubmit)="updateJob()" class="job-form">
+    <div class="form-group">
+      <label for="jobTitle">Job Title*</label>
+      <input type="text" class="form-control" id="jobTitle" formControlName="jobtitle" required>
+      <div *ngIf="jobForm.get('jobtitle')?.hasError('required') && jobForm.get('jobtitle')?.touched"
+        class="text-danger">
+        Job Title is required.
+      </div>
+      <div *ngIf="jobForm.get('jobtitle')?.hasError('pattern') && jobForm.get('jobtitle')?.touched" class="text-danger">
+        Job Title cannot contain special character.
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="company">Company*</label>
+      <input type="text" class="form-control" id="company" formControlName="companyforthisjob" required>
+      <div *ngIf="jobForm.get('companyforthisjob')?.hasError('required') && jobForm.get('companyforthisjob')?.touched"
+        class="text-danger">
+        Company Name is required.
+      </div>
+      <div *ngIf="jobForm.get('companyforthisjob')?.hasError('pattern') && jobForm.get('companyforthisjob')?.touched"
+        class="text-danger">
+        Company Name cannot contain special character.
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="empName">Name*</label>
+      <input type="text" class="form-control" id="empName" formControlName="empName" required>
+      <div *ngIf="jobForm.get('empName')?.hasError('required')  && jobForm.get('empName')?.touched" class="text-danger">
+        Name is required.
+      </div>
+      <div *ngIf="jobForm.get('empName')?.hasError('pattern') && jobForm.get('empName')?.touched" class="text-danger">
+        Name cannot contain special characters or numbers.
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="empEmail">Email*</label>
+      <input type="email" class="form-control" id="empEmail" formControlName="empEmail" required>
+      <div *ngIf="jobForm.get('empEmail')?.hasError('required')  && jobForm.get('empEmail')?.touched"
+        class="text-danger">
+        Email is required.
+      </div>
+      <div *ngIf="jobForm.get('empEmail')?.hasError('email') && jobForm.get('empEmail')?.touched" class="text-danger">
+        Please enter a valid email address.
+      </div>
+      <div *ngIf="jobForm.get('empEmail')?.hasError('pattern') && jobForm.get('empEmail')?.touched" class="text-danger">
+        Please enter a valid email address.
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="openings">Number of Openings*</label>
+      <input type="number" class="form-control" id="openings" formControlName="numberofopening" required>
+      <div *ngIf="jobForm.get('numberofopening')?.hasError('required') && jobForm.get('numberofopening')?.touched"
+        class="text-danger">
+        Number of Openings is required.
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="mb-3">
+          <label for="country" class="form-label">Country:*</label>
+          <select class="form-control" (change)="onCountryChange($event)" id="country" formControlName="country" placeholder="Select your country"
+            required>
+            <option value="">Select your country</option>
+            <option *ngFor="let country of countries" [value]="country.iso2">{{ country.name }}</option>
+          </select>
+          <div *ngIf="jobForm.get('country')?.hasError('required') && jobForm.get('country')?.touched"
+            class="text-danger">
+            Country is required.
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="mb-3">
+          <label for="state" class="form-label">State:*</label>
+         <!-- <input type="text" class="form-control" id="state" formControlName="state" placeholder="Enter the state"
+            required>-->
+<select id="state" formControlName="state" class="form-control" (change)="onStateChange($event)">
+ <option value="">Select your state</option>
+    <option *ngFor="let state of states" [value]="state.iso2">{{ state.name }}</option>
+  </select>
+          <div *ngIf="jobForm.get('state')?.hasError('required') && jobForm.get('state')?.touched" class="text-danger">
+            State is required.
+          </div>
+          <div *ngIf="jobForm.get('state')?.hasError('pattern') && jobForm.get('state')?.touched" class="text-danger">
+            Invalid state.
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="mb-3">
+          <label for="city" class="form-label">City:*</label>
+<!--          <input type="text" class="form-control" id="city" formControlName="city" placeholder="Enter the city"
+            required>-->
+  <select id="city" formControlName="city" class ="form-control">
+ <option value="">Select your city</option>
+    <option *ngFor="let city of cities">{{ city.name }}</option>
+  </select>
+          <div *ngIf="jobForm.get('city')?.hasError('required') && jobForm.get('city')?.touched" class="text-danger">
+            City is required.
+          </div>
+          <div *ngIf="jobForm.get('city')?.hasError('pattern') && jobForm.get('city')?.touched" class="text-danger">
+            Invalid City.
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="locationjob" class="form-label">Location:*</label>
+      <input type="text" class="form-control" id="locationjob" formControlName="locationjob" placeholder="Location"
+        readonly>
+      <div *ngIf="jobForm.get('locationjob')?.hasError('required') && jobForm.get('locationjob')?.touched"
+        class="text-danger">
+        Location is required.
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="experience" class="form-label">Experience:*</label>
+      <input type="number" class="form-control" id="experience" formControlName="experience" placeholder="Experience" required>
+      <div *ngIf="jobForm.get('experience')?.hasError('required') && jobForm.get('experience')?.touched"
+        class="text-danger">
+        Experience is required.
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="jobtype" class="form-label">Job Type*</label>
+      <select class="form-select" id="jobtype" formControlName="jobtype">
+        <option value="Full-Time">Full-Time</option>
+        <option value="Part-Time">Part-Time</option>
+        <option value="Remote">Remote</option>
+        <option value="Hybrid">Hybrid</option>
+        <option value="Freelance">Freelance</option>
+      </select>
+      <div *ngIf="jobForm.get('jobtype')?.hasError('required') && jobForm.get('jobtype')?.touched"
+        class="text-danger">
+        Required.
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="schedulejob" class="form-label">Schedule*</label>
+      <select class="form-select" formControlName="schedulejob">
+        <option value="" disabled selected>Select Schedule</option>
+        <option value="Morning Shift">Morning Shift</option>
+        <option value="Day Shift">Day Shift</option>
+        <option value="Flexible">Flexible Hours</option>
+        <option value="Night Shift">Night Shift</option>
+      </select>
+      <div *ngIf="jobForm.get('schedulejob')?.hasError('required')  && jobForm.get('schedulejob')?.touched"
+        class="text-danger">
+        Required.
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="payjobType" class="form-label">Pay*</label>
+      <select class="form-select" formControlName="payjobType">
+        <option value="Range">Range</option>
+        <option value="Starting_amount">Starting amount</option>
+        <option value="Maximum_Amount">Maximum Amount</option>
+        <option value="Exact_Amount">Exact Amount</option>
+      </select>
+      <div *ngIf="jobForm.get('payjobType')?.hasError('required')  && jobForm.get('payjobType')?.touched"
+        class="text-danger">
+        Required.
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12" *ngIf="jobForm.get('payjobType')?.value === 'Range'">
+        <div class="mb-3">
+          <!-- <label for="country" class="form-label">Country:*</label> -->
+          <div class="d-flex">
+            <!-- Minimum input column -->
+            <label for="minAmount" class="form-label" required>Minimum:*</label>
+            <input type="number" class="form-control me-2" id="minAmount" formControlName="minAmount"
+              placeholder="Minimum" onchange="updatePayJobValue()" required >
+            <!-- Maximum input column -->
+            <label for="maxAmount" class="form-label" required>Maximum:*</label>
+            <input type="number" class="form-control me-2" id="maxAmount" formControlName="maxAmount"
+              placeholder="Maximum" onchange="updatePayJobValue()" required>
+            <!-- Dropdown for the third input -->
+            <label for="rate" class="form-label">Rate:*</label>
+            <select class="form-select" id="rate" formControlName="rate" onchange="updatePayJobValue()" required>
+              <option value="">Select</option>
+              <option value="Per_Hour">Per Hour</option>
+              <option value="Per_Day">Per Day</option>
+              <option value="Per_Week">Per Week</option>
+              <option value="Per_Month">Per Month</option>
+              <option value="Per_Year">Per Year</option>
+            </select>
+          </div>
+          <div *ngIf="jobForm.get('minAmount')?.hasError('required')  && jobForm.get('minAmount')?.touched"
+            class="text-danger">
+            Minimum Amount is Required
+          </div>
+          <div *ngIf="jobForm.get('maxAmount')?.hasError('required')  && jobForm.get('maxAmount')?.touched"
+            class="text-danger">
+            Maximum Amount is Required.
+          </div>
+          <div *ngIf="jobForm.get('rate')?.hasError('required')  && jobForm.get('rate')?.touched"
+            class="text-danger">
+            Rate is Required.
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12" *ngIf="jobForm.get('payjobType')?.value === 'Starting_amount'">
+        <div class="mb-3">
+          <div class="d-flex">
+            <label for="amount" class="form-label">Starting Amount:*</label>
+            <input type="number" class="form-control me-2" id="amount" formControlName="amount"
+              placeholder="Starting Amount" onchange="updatePayJobValue()" required>
+            <label for="rate" class="form-label">Rate:*</label>
+            <select class="form-select" id="rate" formControlName="rate" onchange="updatePayJobValue()" required>
+              <option value="">Select</option>
+              <option value="Per_Hour">Per Hour</option>
+              <option value="Per_Day">Per Day</option>
+              <option value="Per_Week">Per Week</option>
+              <option value="Per_Month">Per Month</option>
+              <option value="Per_Year">Per Year</option>
+            </select>
+            <div *ngIf="jobForm.get('amount')?.hasError('required') && jobForm.get('amount')?.touched"
+              class="text-danger">
+              Please fill the amount.
+            </div>
+            <div *ngIf="jobForm.get('rate')?.hasError('required')  && jobForm.get('rate')?.touched"
+              class="text-danger">
+              Rate is Required.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-8" *ngIf="jobForm.get('payjobType')?.value === 'Exact_Amount'">
+        <div class="mb-3">
+          <div class="d-flex">
+            <label for="amount" class="form-label">Exact Amount:*</label>
+            <input type="number" class="form-control me-2" id="amount" formControlName="amount"
+              placeholder="Exact Amount" onchange="updatePayJobValue()" required>
+            <div style="margin-left: 10%;" class="col-md-4">
+              <label for="rate" class="form-label">Rate:*</label>
+              <select class="form-select" id="rate" formControlName="rate" onchange="updatePayJobValue()" required>
+                <option value="">Select</option>
+                <option value="Per_Hour">Per Hour</option>
+                <option value="Per_Day">Per Day</option>
+                <option value="Per_Week">Per Week</option>
+                <option value="Per_Month">Per Month</option>
+                <option value="Per_Year">Per Year</option>
+              </select>
+            </div>
+            <div *ngIf="jobForm.get('amount')?.hasError('required') && jobForm.get('amount')?.touched"
+              class="text-danger">
+              Please fill the amount.
+            </div>
+            <div *ngIf="jobForm.get('rate')?.hasError('required')  && jobForm.get('rate')?.touched"
+              class="text-danger">
+              Rate is Required.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12" *ngIf="jobForm.get('payjobType')?.value === 'Maximum_Amount'">
+        <div class="mb-3">
+          <div class="d-flex">
+            <label for="amount" class="form-label">Maximum Amount:*</label>
+            <input type="number" class="form-control me-2" id="amount" formControlName="amount"
+              placeholder="Exact Amount" onchange="updatePayJobValue()" required>
+            <label for="rate" class="form-label">Rate:*</label>
+            <select class="form-select" id="rate" formControlName="rate" onchange="updatePayJobValue()" required>
+              <option value="">Select</option>
+              <option value="Per_Hour">Per Hour</option>
+              <option value="Per_Day">Per Day</option>
+              <option value="Per_Week">Per Week</option>
+              <option value="Per_Month">Per Month</option>
+              <option value="Per_Year">Per Year</option>
+            </select>
+            <div *ngIf="jobForm.get('amount')?.hasError('required') && jobForm.get('amount')?.touched"
+              class="text-danger">
+              Please fill the amount.
+            </div>
+            <div *ngIf="jobForm.get('rate')?.hasError('required')  && jobForm.get('rate')?.touched"
+              class="text-danger">
+              Rate is Required.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="payjob" class="form-label">Job Pay:*</label>
+      <input type="text" class="form-control" id="payjob" formControlName="payjob" placeholder="Job Pay" readonly>
+      <div *ngIf="jobForm.get('payjob')?.hasError('required') && jobForm.get('payjob')?.touched"
+        class="text-danger">
+        Job Pay is required.
+      </div>
+    </div>
+    <!-- <div class="form-group">
+      <label for="paySupport">Pay Support*</label>
+      <input type="number" class="form-control" id="paySupport" formControlName="payjobsup" required>
+    </div> -->
+    <div class="mb-3">
+      <label for="descriptiondata" class="form-label">Description data*</label>
+      <!-- <textarea class="form-control" id="descriptiondata" formControlName="descriptiondata" required></textarea> -->
+      <angular-editor formControlName="descriptiondata" [placeholder]="'Enter text here...'"></angular-editor>
+      <div *ngIf="jobForm.get('descriptiondata')?.hasError('required')  && jobForm.get('descriptiondata')?.touched"
+        class="text-danger">
+        Required.
+      </div>
+    </div>
+
+    <button type="submit" class="btn custom-btn rounded-pill" [disabled]="!jobForm.get('jobtitle')?.valid  || !jobForm.get('empName')?.valid 
+     || !jobForm.get('locationjob')?.valid  || !jobForm.get('empEmail')?.valid  || !jobForm.get('jobtype')?.valid  ||
+     !jobForm.get('schedulejob')?.valid  || !jobForm.get('numberofopening')?.valid  || !jobForm.get('experience')?.valid  || !jobForm.get('descriptiondata')?.valid 
+     || !jobForm.get('payjob')?.valid || !jobForm.get('country')?.valid ||!jobForm.get('state')?.valid ||!jobForm.get('city')?.valid
+     || !jobForm.get('companyforthisjob')?.valid">Update Job</button>
+  </form>
+</div>

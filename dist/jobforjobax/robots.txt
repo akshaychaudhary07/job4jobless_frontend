@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /dashboarduser/
+Disallow: /dashboardemp/
+Disallow: /admin/
+Allow: /

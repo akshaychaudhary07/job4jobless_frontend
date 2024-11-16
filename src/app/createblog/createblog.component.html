@@ -1,0 +1,63 @@
+<!-- <div *ngIf="loading" class="loader"></div> -->
+<form [formGroup]="blogForm" (ngSubmit)="createBlog()" class="form-container">
+  <div class="form-group">
+    <label for="title" ><h1 class="bold-label">Title*:</h1></label>
+    <input type="text" class="form-control" formControlName="title" placeholder="Enter Title">
+    <div *ngIf="blogForm.get('title')?.hasError('required') && blogForm.get('title')?.touched" class="text-danger">
+      Title is required.
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="des"><h1 class="bold-label">Description*:</h1></label>
+    <input type="text" class="form-control" formControlName="des" placeholder="Enter Description">
+    <div *ngIf="blogForm.get('des')?.hasError('required') && blogForm.get('des')?.touched" class="text-danger">
+      Description is required.
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="banner"><h1 class="bold-label">Upload Banner Image*:</h1></label>
+    <input type="file" id="uploadBanner" class="form-control" formControlName="banner" (change)="onFileSelected($event)">
+    <div *ngIf="blogForm.get('banner')?.invalid && blogForm.get('banner')?.touched" class="text-danger">
+      Banner image is required.
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label><h1 class="bold-label">Tags*:</h1></label>
+    <div formArrayName="tags">
+      <div *ngFor="let tagControl of tags.controls; let i=index">
+        <input type="text" class="form-control" [formControlName]="i">
+        <button type="button" style="margin-bottom: 2%;" (click)="removeTag(i)" *ngIf="i > 0">Remove</button>
+        <button type="button" (click)="addTag()" style="margin-left: 2%;" *ngIf="i === tags.length - 1">Add Tag</button>
+        <div *ngIf="tagControl.invalid && tagControl.touched" class="text-danger">
+          <div *ngIf="tagControl.hasError('required')">Tag is required.</div>
+          <div *ngIf="tagControl.hasError('pattern')">Tag must contain only alphabetic characters and spaces.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- <div>
+    <label>Tags List:</label>
+    <ul>
+      <li *ngFor="let tag of tagStrings">{{ tag }}</li>
+    </ul>
+  </div> -->
+
+  <div class="mb-3">
+    <label for="content" class="form-label"><h1 class="bold-label">Content*:</h1></label>
+    <angular-editor formControlName="content" [placeholder]="'Enter text here...'"></angular-editor>
+    <div *ngIf="blogForm.get('content')?.hasError('required') && blogForm.get('content')?.touched" class="text-danger">
+      Content is required.
+    </div>
+  </div>
+  
+  <button type="submit" [disabled]="!blogForm.valid">Create Blog</button>
+  <button (click)="goToPostBlog()" style="margin-left: 2%;">Back</button>
+
+  <div class="loader-container" *ngIf="isLoading">
+    <div class="loader"></div>
+  </div>
+</form>

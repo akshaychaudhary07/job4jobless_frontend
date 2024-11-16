@@ -1,0 +1,172 @@
+<div class="container p-0">
+    <h1 class="h3 mb-3">Settings</h1>
+    <div class="row">
+        <div class="col-md-5 col-xl-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">Profile Settings</h5>
+                </div>
+                <div class="list-group list-group-flush" role="tablist">
+                    <a class="list-group-item list-group-item-action active" data-toggle="list" href="#account"
+                        role="tab">
+                        Account
+                    </a>
+                    <a class="list-group-item list-group-item-action" data-toggle="list" href="#password" role="tab">
+                        Password
+                    </a>
+                    <a class="list-group-item list-group-item-action" data-toggle="list" href="#privacy-safety"
+                        role="tab">
+                        Privacy and safety
+                    </a>
+
+                    <a class="list-group-item list-group-item-action" data-toggle="list" href="#userdata" role="tab">
+                        Your data
+                    </a>
+                    <!-- <a class="list-group-item list-group-item-action" data-toggle="list" href="#delete-accountuser" role="tab">
+              Delete account
+            </a> -->
+                </div>
+            </div>
+        </div>
+        <div class="col-md-7 col-xl-8">
+            <div class="tab-content">
+                <div class="tab-pane fade show active" id="account" role="tabpanel">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">Public info</h5>
+                        </div>
+                        <div class="card-body">
+                            <form>
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <div class="form-group">
+                                            <div *ngFor="let adminData of data">
+                                                <label for="inputUsername">Username</label>
+                                                <h4>{{ adminData.adminName }}</h4>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="password" role="tabpanel">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Password</h5>
+                            <form>
+                                <div class="form-group">
+                                    <label for="inputPasswordCurrent">Current password</label>
+                                    <input type="password" class="form-control" id="inputPasswordCurrent">
+                                    <small><a href="#">Forgot your password?</a></small>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputPasswordNew">New password</label>
+                                    <input type="password" class="form-control" id="inputPasswordNew">
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputPasswordNew2">Verify password</label>
+                                    <input type="password" class="form-control" id="inputPasswordNew2">
+                                </div>
+                                <button type="submit" class="btn custom-btn rounded-pill">Save changes</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <!-- ... Existing code ... -->
+
+                <div class="tab-pane fade" id="privacy-safety" role="tabpanel">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Privacy and Safety</h5>
+                            <!-- Add content for privacy and safety settings here -->
+                            <form>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="privacySetting1"
+                                        name="privacySetting1">
+                                    <label class="form-check-label" for="privacySetting1">
+                                        Keep my profile private.
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="privacySetting2"
+                                        name="privacySetting2">
+                                    <label class="form-check-label" for="privacySetting2">
+                                        Enable two-factor authentication for added security.
+                                    </label>
+                                </div>
+                                <!-- Add more privacy and safety settings here -->
+                                <button type="submit" class="btn custom-btn rounded-pill">Save changes</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+                <!-- ... Remaining code ... -->
+
+                <div class="tab-pane fade" id="userdata" role="tabpanel">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Profile</h5>
+                            <DIV *ngFor="let adminData of data">
+                                <table class="table table-bordered">
+                                    <tbody>
+
+                                        <tr>
+                                            <th>Admin Name</th>
+                                            <td>{{ adminData.adminName }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Admin Email</th>
+                                            <td>{{ adminData.adminMail }}</td>
+                                        </tr>
+
+                                        <!-- Add more properties as needed -->
+                                    </tbody>
+                                </table>
+                            </DIV>
+
+                            <!-- <button class="btn btn-primary" (click)="openUpdateProfileForm()">Update Profile</button> -->
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- ... Existing code ... -->
+
+                <div class="tab-pane fade" id="delete-accountuser" role="tabpanel">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Delete Account</h5>
+                            <!-- Display user information to confirm deletion -->
+                            <p>
+                                You are about to delete the following account:
+                            </p>
+                            <ul *ngIf="adminData">
+                                <li><strong>Username:</strong> {{ adminData.adminName }}</li>
+                                <li><strong>First Name:</strong> {{ adminData.adminMail }}</li>
+                                <li><strong>User ID:</strong> {{ adminData.uid }}</li>
+                            </ul>
+                            <p>
+                                This action cannot be undone. Are you sure you want to proceed?
+                            </p>
+                            <!-- Add a delete button to confirm account deletion -->
+                            <!-- <button class="btn btn-danger" (click)="deleteAccount()">Delete Account</button> -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ... Remaining code ... -->
+
+                <!-- Add more tab content here -->
+            </div>
+        </div>
+    </div>
+</div>

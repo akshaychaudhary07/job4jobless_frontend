@@ -1,0 +1,27 @@
+.custom-p {
+    font-family: 'Poppins', sans-serif;
+    line-height: 5vw;
+}
+
+.custom-p-normal {
+    font-family: 'Poppins', sans-serif;
+}
+
+@media (max-width: 500px) {
+    .content-1 {
+        margin-left: 0rem!important;
+    }
+}
+@media (min-width: 768px) and (max-width: 1440px) {
+    .feature{
+        flex-wrap: wrap!important;
+    }
+    .content-1 {
+        margin-left: -1rem!important;
+    }
+}
+@media (min-width: 500px) and (max-width: 630px) {
+    .content-1 {
+        margin-left: 0rem!important;
+    }
+}

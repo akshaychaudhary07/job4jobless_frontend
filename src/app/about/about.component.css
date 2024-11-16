@@ -1,0 +1,172 @@
+.client-card {
+    padding: 20px;
+    text-align: center;
+    border: 1px solid #ddd;
+    transition: box-shadow 0.3s;
+}
+
+.client-card:hover {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.client-card img {
+    max-width: 100%;
+}
+
+/* Testimonial styles */
+.testimonial {
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+    display: none;
+}
+
+.client-card:hover .testimonial {
+    display: block;
+}
+
+.card:hover {
+    border: 2px solid #007bff;
+}
+
+.card {
+    height: 100%;
+}
+
+p {
+    text-align: justify;
+}
+
+.jumbotron {
+    font-family: 'Poppins', sans-serif;
+}
+.welcome-text {
+    font-size: 6vw; /* Adjust font size relative to viewport width */
+    color: white;
+    /* line-height: 6vw; Adjust line height relative to viewport width */
+}
+
+.lead {
+    font-size: 3vw; /* Adjust font size relative to viewport width */
+    color: white;
+    margin-top: 5%;
+    /* line-height: 6vw; Adjust line height relative to viewport width */
+}
+
+/* Add media query for smaller screens */
+@media screen and (max-width: 768px) {
+    .welcome-text {
+        font-size: 6vw; /* Adjust font size for smaller screens */
+        /* line-height: 8vw; Adjust line height for smaller screens */
+    }
+
+    .lead {
+        font-size: 4vw; /* Adjust font size for smaller screens */
+        /* line-height: 8vw; Adjust line height for smaller screens */
+    }
+}
+.custom-font {
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  
+  .custom-font {
+    font-family: 'Poppins', sans-serif;
+  }
+.newAbout {
+    max-width: 800px; /* Adjust the maximum width as needed */
+    margin: 0 auto; /* Center the container horizontally */
+    padding: 0 20px; /* Add some padding to the sides */
+    margin-top: 2%;
+    margin-bottom: 2%;
+    text-align: center;
+  }
+  .newAbout h1 {
+    margin-bottom: 20px; /* Add some space below the heading */
+    /* text-decoration: underline; */
+    font-weight: bold;
+    text-underline-position: under; /* Position the underline below the text */
+  }
+  
+
+  @media screen and (max-width: 768px) {
+    .newAbout {
+      max-width: 100%; /* Adjust to full width for smaller screens */
+    }
+  }
+ 
+  /* Make the job cards responsive */
+  @media (max-width: 767px) {
+    .col-md-3 {
+      flex-basis: 100%;
+      max-width: 100%;
+    }
+  }
+  .job-card {
+    height: 100%;
+  }
+
+
+
+h1 {
+ font-family: 'Poppins', sans-serif; 
+}
+
+.custom-font {
+  font-family: 'Poppins', sans-serif;
+}
+
+
+.custom-font {
+  font-family: 'Poppins', sans-serif;
+}
+
+
+.custom-pills-btn {
+  color: white !important;
+  border: 2px solid #1E2E5C !important;
+  background-color: #1E2E5C !important;
+  border: none;
+  outline: none;
+}
+.custom-btn {
+  color: white;
+  background-color: #1e2e5c;
+}
+
+.custom-outline {
+  outline: 2px solid #1E2E5C;
+}
+
+input {
+  font-family: 'Poppins', sans-serif;
+}
+
+
+/* @media (max-width: 768px) {
+  .banner-img h1 {
+    font-size: 1rem;
+  }
+}
+@media (max-width: 576px) {
+img.img-fluid.w-100 {
+    min-height: 15vh;
+    object-fit: cover;
+}
+} */
+
+@media (max-width: 576px) {
+  img.img-fluid.w-100 {
+      min-height: 15vh;
+      object-fit: cover;
+  }
+  }
+
+
+@media (max-width: 576px) {
+  .pb-sm-2 {
+    padding-bottom: 1.4rem !important; /* Forces the padding for small screens */
+  }
+}

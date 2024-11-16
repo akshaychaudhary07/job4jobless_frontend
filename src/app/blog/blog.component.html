@@ -1,0 +1,18 @@
+<div class="" *ngIf="blogDetails">
+    <div class="blog-details">
+        <div class="image-container">
+            <img [src]="blogDetails.banner" alt="Blog Image" class="responsive-image">
+
+            <h1 class="text-3xl font-bold mb-4 title-mar">{{ blogDetails.title }}</h1>
+        </div>
+        <div class="content-center">
+            <div class="font-gelasio blog-page-content">
+                <p [innerHTML]="blogDetails.content ? sanitizeContent(blogDetails.content) : ''"></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="center-container">
+    <app-blog-card></app-blog-card>
+</div>

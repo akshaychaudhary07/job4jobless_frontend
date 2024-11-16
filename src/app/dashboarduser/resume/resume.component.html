@@ -1,0 +1,87 @@
+<form [formGroup]="resumeForm">
+  <div class="container mt-5">
+    <!-- Step 1: Your first set of form fields -->
+    <div class="step" *ngIf="currentStep === 1">
+      <h2>Step 1: Personal Information</h2>
+      <div class="form-group">
+        <label for="heading">
+          <h1><b>Heading:</b></h1>
+        </label>
+        <!-- <input type="text" id="heading" name="heading" formControlName="heading" class="form-control" /> -->
+        <angular-editor formControlName="heading"></angular-editor>
+        <div *ngIf="resumeForm.get('heading')?.hasError('required') && resumeForm.get('heading')?.touched"
+          class="text-danger">
+          Heading is required.
+        </div>
+        <div *ngIf="resumeForm.get('heading')?.hasError('pattern') && resumeForm.get('heading')?.touched"
+          class="text-danger">
+          Heading is invalid.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="skills">Skills:</label>
+        <!-- <input type="text" id="skills" name="skills" formControlName="skills" class="form-control" /> -->
+        <angular-editor formControlName="skills"></angular-editor>
+        <div *ngIf="resumeForm.get('skills')?.hasError('required') && resumeForm.get('skills')?.touched"
+          class="text-danger">
+          Skills is required.
+        </div>
+
+
+      </div>
+
+      <!-- <button type="button" class="btn custom-btn rounded-pill" (click)="nextStep()" [disabled]="!areAllFieldsFilled()">Next</button> -->
+      <button type="button" class="btn custom-btn rounded-pill" (click)="nextStep()"
+        [disabled]="!resumeForm.get('skills')?.valid || !resumeForm.get('heading')?.valid">Next</button>
+
+    </div>
+
+    <!-- Step 2: Your second set of form fields -->
+    <div class="step" *ngIf="currentStep === 2">
+      <h2>Step 2: Skills and Experience</h2>
+      <div class="form-group">
+        <label for="experience">Experience:</label>
+        <!-- <input type="number" id="experience" name="experience" formControlName="experience" class="form-control" /> -->
+        <angular-editor formControlName="experience"></angular-editor>
+      </div>
+      <div class="form-group">
+        <label for="education">Education</label>
+        <!-- <input type="text" id="education" name="education" formControlName="education" class="form-control" /> -->
+        <angular-editor formControlName="education"></angular-editor>
+      </div>
+
+      <div class="form-group">
+        <label for="description">Description:</label>
+        <!-- <textarea id="description" name="description" formControlName="description" class="form-control"></textarea> -->
+        <angular-editor formControlName="description"></angular-editor>
+      </div>
+      <div class="d-flex justify-content-between align-items-center">
+        <button type="button" class="btn custom-btn rounded-pill" (click)="prevStep()">Previous</button>
+        <!-- <button type="button" class="btn custom-btn rounded-pill" (click)="nextStep()" [disabled]="!areAllFieldsFilled()">Next</button> -->
+        <button type="button" class="btn custom-btn rounded-pill" (click)="nextStep()" [disabled]="!resumeForm.get('experience')?.valid || !resumeForm.get('skills')?.valid
+                      || !resumeForm.get('education')?.valid || !resumeForm.get('description')?.valid">Next</button>
+      </div>
+    </div>
+
+    <!-- Step 3: Review the details before submission -->
+    <div class="step" *ngIf="currentStep === 3">
+      <h2>Step 3: Review Your Details</h2>
+      <p><strong>Heading:</strong> {{ resumeForm.value.heading }}</p>
+      <p><strong>Skills:</strong> {{ resumeForm.value.skills }}</p>
+
+      <p><strong>Experience:</strong> {{ resumeForm.value.experience }}</p>
+
+      <p><strong>Education:</strong> {{ resumeForm.value.education }}</p>
+      <!-- <p><strong>Description</strong>{{ resumeForm.value.description }}</p> -->
+      <p><strong>Description:</strong></p>
+      <p [innerHTML]="resumeForm.value.description"></p>
+      <div class="d-flex justify-content-between align-items-center">
+        <button type="button" class="btn custom-btn rounded-pill" (click)="prevStep()">Previous</button>
+        <button type="button" class="btn custom-btn rounded-pill" (click)="submitResume()">Submit</button>
+      </div>
+    </div>
+  </div>
+</form>
+
+<canvas #resumeCanvas style="display: none;"></canvas>

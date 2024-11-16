@@ -1,0 +1,36 @@
+/* Job card styles */
+.job-card {
+    transition: transform 0.3s;
+  }
+  
+  /* Button hover effect */
+  .show-more:hover {
+    background-color: #007bff;
+    color: #fff;
+    border: 2px solid #007bff;
+  }
+  
+  .edit-button:hover {
+    background-color: #6c757d;
+    color: #fff;
+    border: 2px solid #6c757d;
+  }
+  
+  /* Show details animation */
+  .card-body {
+    overflow: hidden;
+  }
+  
+  .custom-btn {
+    color: white;
+    background-color: #1e2e5c;
+}
+
+.no-jobs-image {
+  max-width: 100%;
+  height: auto; /* Ensures the image maintains its aspect ratio */
+}
+.findjobbtn {
+  background-color: #1e2e5c;
+  color: white;
+}

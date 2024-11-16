@@ -1,0 +1,43 @@
+<!-- <div class="container mt-5">
+  <h2 class="text-center">{{juname}}</h2>
+  <div class="chat-container">
+    <div class="chat-messages">
+      <div *ngFor="let message of messages" class="message-container">
+        <div class="message" [ngClass]="{'sent': message.messageFrom === 'yourSenderId', 'received': message.messageFrom !== 'yourSenderId' }">
+          {{ message.message }}
+        </div>
+      </div>
+    </div>
+    <form [formGroup]="messageForm" (ngSubmit)="sendMessage()" class="message-form">
+      <div class="form-group">
+        <textarea id="message" formControlName="message" placeholder="Type your message..." required class="form-control"></textarea>
+      </div>
+      <button type="submit" class="btn custom-btn rounded-pill btn-block">Send</button>
+    </form>
+  </div>
+</div> -->
+
+<div class="container mt-5">
+  <h2 class="text-center">{{ juname }}</h2>
+  <div class="chat-container">
+    <div class="chat-messages">
+      <!-- Display received and sent messages here -->
+      <div *ngFor="let message of messages" class="message-container">
+        <div class="message" [ngClass]="{'sent': message.messageFrom === empid, 'received': message.messageFrom !== empid }">
+          <div *ngIf="message.messageFrom === empid">You</div>
+          <div *ngIf="message.messageFrom !== empid">{{ juname }}</div>
+          <div>{{ message.message }}</div>
+          <!-- <div class="timestamp">{{ message.sendTime | date: 'hh:mm a' }}</div> -->
+        </div>
+      </div>
+    </div>
+    <form [formGroup]="messageForm" (ngSubmit)="sendMessage()" class="message-form">
+      <div class="form-group">
+        <textarea id="message" formControlName="message" placeholder="Type your message..." required class="form-control"></textarea>
+      </div>
+      <button type="submit" class="btn custom-btn rounded-pill btn-block">Send</button>
+    </form>
+  </div>
+</div>
+
+

@@ -1,0 +1,59 @@
+<div class="container" style="margin-top: 30px;">
+  <h4 class="text-center">CONTACT EMPLOYER</h4>
+  <div class="table-responsive text-center">
+    <table class="table table-bordered">
+      <thead>
+        <tr class="bg-success">
+          <!-- <th style="width: 10%;">Contact ID</th> -->
+          <th class="w-15">Help Type</th>
+          <th class="w-15">Name</th>
+          <th class="w-20">Email</th>
+          <th class="w-20">Company</th>
+          <th class="w-10">Phone</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let contact of data" class="bg-light">
+          <!-- <td>{{ contact.contactid }}</td> -->
+          <td>{{ contact.contacthelp }}</td>
+          <td>{{ contact.contactname }}</td>
+          <td><a href="mailto:{{ contact.contactmail }}">{{ contact.contactmail }}</a></td>
+          <td>{{ contact.contactcompany }}</td>
+          <td><a href="tel:{{ contact.contactphone }}">{{ contact.contactphone }}</a></td>
+        </tr>
+      </tbody>
+    </table>
+      <div class="my-2">
+        <button [disabled]="currentPage===1" class="previous-button" (click)="onPageChange(currentPage-1)"> < Previous</button>
+      <button [disabled]="currentPage === totalPage" class="load-more-button" (click)="onPageChange(currentPage+1)">Next ></button>
+      </div>
+  </div>
+</div>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-4" *ngFor="let contact of dcontacts">
+      <div class="card mb-3">
+        <div class="card-body">
+         
+          <p class="card-text"><strong>Name:</strong> {{ contact.name }}</p>
+          <p class="card-text">
+            <strong>Email:</strong>
+            <a href="mailto:{{ contact.email }}">{{ contact.email }}</a>
+          </p>
+          <p class="card-text">
+            <strong>Contact Number:</strong>
+            <span (click)="openContactOption(contact.contactNumber)" style="cursor: pointer;">{{ contact.contactNumber }}</span>
+          </p>
+          <p class="card-text"><strong>Message:</strong> {{ contact.message }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="my-2 text-center">
+    <button [disabled]="directCurrentPage===1" class="previous-button" (click)="onPageChangeDirect(directCurrentPage-1)"> < Previous</button>
+    <button [disabled]="directCurrentPage === totalPage" class="load-more-button" (click)="onPageChangeDirect(directCurrentPage+1)">Next ></button>
+  </div>
+</div>
+

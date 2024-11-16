@@ -1,0 +1,98 @@
+<div class="container" *ngIf="jobs.length > 0; else noJobsContent">
+  
+  <h1 class="text-center mb-4">Job Listings</h1>
+  <div class="container mt-3 mb-3">
+    <div class="row justify-content-center">
+      <div class="col-md-6 col-lg-5">
+        <div class="input-group">
+          <input type="text" [(ngModel)]="jobTitleFilter"
+            class="rounded-pill m-2 px-4 py-3 w-100 shadow-lg border-0 custom-outline" placeholder="Enter job title">
+        </div>
+      </div>
+      <div class="col-md-12 col-lg-2 mt-2 mt-md-0 text-center">
+        <button type="button" class="btn rounded-pill px-4 py-3 shadow-lg mx-1 findjobbtn"
+        (click)="performSearchAndFetchJobs()">Search Jobs</button>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <ng-container *ngIf="jobs.length > 0; else noJobsContent">
+      <div class="col-12">
+        <div class="row justify-content-center">
+          <div class="col-auto d-flex align-items-center">
+            <button class="btn custom-btn rounded-pill" (click)="onPageChange(currentPage-1)" [disabled]="currentPage === 1">
+              <i class="fa fa-arrow-left"></i> Prev
+            </button>
+          </div>
+          <div class="col-md-6 col-lg-4" *ngFor="let job of jobs">
+            <div class="card mb-4 job-card">
+              <div class="card-body">
+                <h2 class="card-title">{{ job.jobtitle }}</h2>
+                <p class="card-text"><strong>Job ID:</strong> {{ job.jobid }}</p>
+                <p class="card-text"><strong>Company:</strong> {{ job.companyforthisjob }}</p>
+                <p class="card-text"><strong>Name:</strong> {{ job.empName }}</p>
+                <p class="card-text"><strong>Email:</strong> {{ job.empEmail }}</p>
+                <p class="card-text"><strong>Openings:</strong> {{ job.numberofopening }}</p>
+                <p class="card-text"><strong>Location:</strong> {{ job.locationjob }}</p>
+                <p class="card-text"><strong>Type:</strong> {{ job.jobtype }}</p>
+                <p class="card-text"><strong>Schedule:</strong> {{ job.schedulejob }}</p>
+                <p class="card-text"><strong>Pay:</strong> {{ job.payjob }}</p>
+                <p class="card-text"><strong>Experience:</strong> {{ job.experience }}</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <button class="btn custom-btn rounded-pill show-more" (click)="showMoreInfo(job)">
+                    {{ job.showDetails ? 'Hide Description' : 'Show Description' }}
+                  </button>
+                  <button class="btn custom-btn rounded-pill edit-button" (click)="editJob(job.jobid)">Edit</button>
+                  <button class="btn custom-btn rounded-pill apply-button" (click)="fetchAppliedUsers(job.empid, job.jobid)">
+                    View Applicants
+                    <span *ngIf="job.applicants > 0" class="badge rounded-pill bg-danger ml-2">{{ job.applicants }}</span>
+                  </button>
+                </div>
+              </div>
+              <div class="card-footer" *ngIf="job.showDetails">
+                <strong>Description:</strong>
+                <p [innerHTML]="job.descriptiondata"></p>
+              </div>
+            </div>
+          </div>
+          <div class="col-auto d-flex align-items-center">
+            <button class="btn custom-btn rounded-pill " (click)="onPageChange(currentPage+1)" [disabled]="currentPage === totalPages">
+              Next <i class="fa fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>
+
+<ng-template #noJobsContent>
+  <div class="container text-center">
+    <img src="https://raw.githubusercontent.com/suraj9594/Feature-Images/main/images/no%20jobs%20posted%20yet-01.png" alt="No Jobs" class="no-jobs-image">
+    <p class="no-jobs-text">No jobs posted yet.</p>
+    <div class="d-flex justify-content-center">
+      <button class="btn custom-btn rounded-pill post-job-button" (click)="redirectToDashboardEmp()">Post a Job</button>
+    </div>
+  </div>
+</ng-template>
+
+<!-- Modal for displaying applied users -->
+<div class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Applicants for {{ selectedJob?.jobtitle }}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeModal()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <ul>
+          <li *ngFor="let applicant of selectedJob?.applicants">
+            {{ applicant.juname }} - {{ applicant.jumail }}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

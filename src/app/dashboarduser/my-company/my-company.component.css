@@ -1,0 +1,125 @@
+/* .custom-btn {
+    color: white;
+    background-color: #1e2e5c;
+}
+
+.no-employers-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60vh;
+    text-align: center;
+}
+
+.no-employers-content {
+    background: #f8f9fa;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.no-employers-content h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #343a40;
+}
+
+.no-employers-content p {
+    margin-bottom: 1.5rem;
+    color: #6c757d;
+}
+
+.no-employers-content .btn {
+    padding: 0.75rem 1.25rem;
+    font-size: 1rem;
+    border-radius: 0.3rem;
+}
+
+.btn-color{
+    color: white;
+    background-color: #1e2e5c;
+} */
+/* Additional styles for enhanced design */
+.container {
+    background-color: #f8f9fa; /* Light background color */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Box shadow for depth */
+}
+
+.card-hover:hover {
+    cursor: pointer; /* Change cursor on hover */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); /* Box shadow on hover */
+}
+
+.card {
+    border-radius: 8px; /* Rounded corners for cards */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Box shadow for cards */
+    transition: box-shadow 0.3s ease; /* Smooth transition for box shadow */
+}
+
+.accordion-body {
+    padding: 10px; /* Padding for accordion body */
+}
+
+.no-employers-container {
+    background-color: #fff; /* Background color for no employers template */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Box shadow for depth */
+}
+
+.no-employers-content {
+    max-width: 600px; /* Limit width of content */
+    margin: auto; /* Center content horizontally */
+}
+
+.custom-btn {
+    background-color: #1e2e5c; /* Custom button background color */
+    color: #fff; /* Text color for custom button */
+    border: none; /* Remove border */
+}
+
+.custom-btn:hover {
+    background-color: #1e2e5c; /* Darker background color on hover */
+}
+
+.no-employers-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60vh; 
+    text-align: center;
+}
+
+.no-employers-content {
+    background: #f8f9fa; 
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.no-employers-content h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #343a40; 
+}
+
+.no-employers-content p {
+    margin-bottom: 1.5rem;
+    color: #6c757d; 
+}
+
+.no-employers-content .btn {
+    padding: 0.75rem 1.25rem;
+    font-size: 1rem;
+    border-radius: 0.3rem;
+}
+
+.card-hover {
+    transition: transform 0.2s;
+}
+
+.card-hover:hover {
+    transform: translateY(-5px);
+}

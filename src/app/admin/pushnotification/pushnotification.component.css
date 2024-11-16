@@ -1,0 +1,27 @@
+ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+
+/* Media query for smaller screens */
+@media screen and (max-width: 768px) {
+    h4 {
+        font-size: 11px;
+        /* Adjusted font size for smaller screens */
+    }
+}
+
+/* Media query for larger screens */
+@media screen and (min-width: 992px) {
+    h4 {
+        font-size: 18px;
+        /* Adjusted font size for larger screens */
+    }
+}
+.token {
+    max-width: 100%; /* Adjust the maximum width as needed */
+    overflow: hidden;
+    text-overflow: ellipsis; /* Add ellipsis for overflow text */
+    white-space: nowrap; /* Prevent wrapping */
+  }

@@ -1,0 +1,125 @@
+<app-trendingblogs></app-trendingblogs>
+<div *ngIf="signupLoader" class="loader">Loading...</div>
+<button class="floating-signin-button" (click)="openSignInModal()">Sign In</button>
+<div class="modal" id="signInModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="centered-buttons">
+          <button class="btn btn-primary" (click)="showSignIn()">SignIn</button>
+          <button class="btn btn-danger" (click)="showSignUp()">SignUp</button>
+        </div>
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeSignInModal()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <ng-container *ngIf="showLoginForm">
+          <form [formGroup]="loginform" (ngSubmit)="login(loginform)">
+            <div class="form-group">
+              <input type="email" class="form-control px-4 rounded-pill" formControlName="email" id="email"
+                placeholder="Email"/>
+                <div *ngIf="loginform.get('email')?.hasError('required') && loginform.get('email')?.touched"
+                class="text-danger">Email is required.
+              </div>
+              <div *ngIf="loginform.get('email')?.hasError('email') && loginform.get('email')?.touched"
+                class="text-danger">Please enter a valid email address.
+              </div>
+              <div *ngIf="loginform.get('email')?.hasError('pattern') && loginform.get('email')?.touched"
+                class="text-danger">Please enter a valid email address.
+              </div>
+            </div>
+            <div class="form-group d-flex justify-content-between align-items-center">
+              <input type="password" class="form-control px-4 rounded-pill" formControlName="password" id="password"
+                placeholder="Password" [type]="passwordVisible ? 'text' : 'password'" />
+              <div (click)="togglePasswordVisibility()" class="px-2 eye-icon">
+                <div *ngIf="passwordVisible; else hidePassword">
+                  <i class="fa-solid fa-eye-slash"></i>
+                </div>
+                <ng-template #hidePassword>
+                  <i class="fa-solid fa-eye"></i>
+                </ng-template>
+              </div>
+            </div>
+            <div class="form-group d-flex flex-column justify-content-center align-items-stretch">
+              <div *ngIf="signinLoader" class="loader"></div>
+              <button type="submit" class="btn rounded-pill my-3" style="background-color: #1E2E5C; color: white;" [disabled]="!loginform.valid">
+                <span>Sign In</span>
+              </button>
+              <button type="button" class="btn rounded-pill my-3" style="background-color: #1E2E5C; color: white;"
+                (click)="redirectToAnotherPage()">
+                Forgot Password ?
+              </button>
+            </div>
+          </form>
+        </ng-container>
+        <ng-container *ngIf="showSignUpForm">
+          <form [formGroup]="signupForm" (ngSubmit)="signup(signupForm)">
+            <div class="form-group">
+              <input type="text" class="form-control px-4 rounded-pill" formControlName="fullname" id="fullname"
+                placeholder="Full Name" />
+                <div
+                *ngIf="signupForm.get('fullname')?.hasError('required') && signupForm.get('fullname')?.touched"
+                class="text-danger">Name is required.
+              </div>
+              <div
+                *ngIf="signupForm.get('fullname')?.hasError('pattern') && signupForm.get('fullname')?.touched"
+                class="text-danger">Invalid Format.
+              </div>
+            </div>
+            <div class="form-group">
+              <input type="email" class="form-control px-4 rounded-pill" formControlName="email" id="email"
+                placeholder="Email" />
+              <div *ngIf="signupForm.get('email')?.hasError('required') && signupForm.get('email')?.touched"
+                class="text-danger">Email is required.
+              </div>
+              <div *ngIf="signupForm.get('email')?.hasError('email') && signupForm.get('email')?.touched"
+                class="text-danger">Please enter a valid email address.
+              </div>
+              <div *ngIf="signupForm.get('email')?.hasError('pattern') && signupForm.get('email')?.touched"
+                class="text-danger">Please enter a valid email address.
+              </div>
+
+            </div>
+            <div class="form-group d-flex justify-content-between align-items-center">
+              <!-- <input type="password" class="form-control px-4 rounded-pill" formControlName="password" id="password"
+                placeholder="Password" [type]="passwordVisible ? 'text' : 'password'"
+                [ngClass]="{ 'is-invalid': signupForm.get('password')?.invalid && signupForm.get('password')?.touched }" /> -->
+                <input type="password" class="form-control px-4 rounded-pill" formControlName="password" id="password"
+                placeholder="Password" [type]="passwordVisible ? 'text' : 'password'"/>
+              <div (click)="togglePasswordVisibility()" class="px-2 eye-icon">
+                <div *ngIf="passwordVisible; else hidePassword">
+                  <i class="fa-solid fa-eye-slash"></i>
+                </div>
+                <ng-template #hidePassword>
+                  <i class="fa-solid fa-eye"></i>
+                </ng-template>
+              </div>
+            </div>
+            <div
+              *ngIf="signupForm.get('password')?.hasError('required') && signupForm.get('password')?.touched"
+              class="text-danger">Password is required.
+            </div>
+            <div
+              *ngIf="signupForm.get('password')?.hasError('minlength') && signupForm.get('password')?.touched"
+              class="text-danger">Password must be at least 8 characters long.
+            </div>
+            <div
+              *ngIf="signupForm.get('password')?.hasError('pattern') && signupForm.get('password')?.touched"
+              class="text-danger">Password must contain at least one capital letter, one small letter, one number,
+              and one special character.
+            </div>
+            <div class="form-group d-flex flex-column justify-content-center align-items-stretch">
+              <div *ngIf="signupLoader" class="loader"></div>
+              <button type="submit" class="btn rounded-pill my-3" style="background-color: #1E2E5C; color: white;" [disabled]="!signupForm.valid">
+                <span>Sign Up</span>
+              </button>
+            </div>
+          </form>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,32 @@
+.card-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    margin: auto;
+}
+
+.card {
+    height: 50vh;
+    margin: 0 1%; 
+    border: 2px solid black;
+    border-radius: 8px;
+    background-color: #f0f0f0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+@media (min-width: 1600px) {
+    .card {
+        width: 20vw;
+    }
+}
+
+@media (max-width: 1600px) {
+    .card {
+        width: 60vw;
+    }
+    .card-container {
+        width: 100%;
+        margin: auto;
+    }
+}

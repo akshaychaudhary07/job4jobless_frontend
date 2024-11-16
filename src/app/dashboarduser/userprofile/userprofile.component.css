@@ -1,0 +1,18 @@
+.custom-btn {
+    color: white;
+    background-color: #1e2e5c;
+  }
+  .toggle-password-icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 10px;
+    cursor: pointer;
+  }
+  .eye-icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0;
+    cursor: pointer;
+  }

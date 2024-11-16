@@ -1,0 +1,16 @@
+.banner {
+    font-size: 4vw;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    margin: 0.5em auto;
+    color: #1E2E5C;
+    text-align: left;
+}
+
+
+    .testing-phase-text {
+        color: #1E2E5C;
+	font-weight: bold;
+	font-size: 1vw;
+	text-align: center;
+    }

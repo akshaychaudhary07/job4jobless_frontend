@@ -1,0 +1,141 @@
+.no-employers-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60vh;
+    text-align: center;
+}
+
+.no-employers-content {
+    background: #f8f9fa;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.no-employers-content h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #343a40;
+}
+
+.no-employers-content p {
+    margin-bottom: 1.5rem;
+    color: #6c757d;
+}
+
+.no-employers-content .btn {
+    padding: 0.75rem 1.25rem;
+    font-size: 1rem;
+    border-radius: 0.3rem;
+}
+
+.job-item {
+    background-color: #f8f9fa;
+}
+
+.job-title {
+    font-size: 1.25rem;
+}
+
+.job-company {
+    font-size: 1rem;
+}
+
+.job-description {
+    margin-bottom: 1rem;
+}
+
+.custom-btn {
+    background-color: #1e2e5c;
+    color: #fff;
+    border: none;
+}
+
+.company-details {
+    background-color: #f8f9fa;
+}
+
+.company-details .card-body {
+    padding: 1.5rem;
+}
+
+.company-details .card-title {
+    font-size: 1.5rem;
+}
+
+.company-details .card-text {
+    margin-bottom: 0.5rem;
+}
+
+.description-text {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #6c757d;
+}
+
+.btn-outline-primary {
+    border-color: #1e2e5c;
+    color: #1e2e5c;
+}
+
+.btn-outline-primary:hover {
+    background-color: #1e2e5c;
+    color: #fff;
+    border-color: #1e2e5c;
+}
+
+.custom-btn:hover {
+    background-color: #1e2e5c;
+}
+
+.job-container {
+    display: flex;
+    justify-content: center;
+}
+
+.job-item {
+    width: 60%;
+    max-width: 600px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.job-title, .job-company {
+    margin-bottom: 10px;
+}
+
+.job-description {
+    margin-bottom: 15px;
+}
+
+p {
+    margin-bottom: 8px;
+}
+
+.strong {
+    font-weight: bold;
+}
+
+.custom-font {
+    font-family: 'Poppins', sans-serif;
+}
+
+.custom-pills {
+    color: black;
+    border: 2px solid #1E2E5C;
+    background-color: #1e2e5c41;
+}
+
+.custom-pills-btn {
+    color: white !important;
+    border: 2px solid #1E2E5C !important;
+    background-color: #1E2E5C !important;
+    border: none;
+    outline: none;
+}
+.jobContain{
+    margin: 2% 28%;
+}

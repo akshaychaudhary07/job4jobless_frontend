@@ -1,0 +1,14 @@
+
+<div class="main-content">
+    <!-- <div class="search-bar">
+        <input type="text" class="form-control" [(ngModel)]="searchQuery" placeholder="Search blogs..."
+            (input)="filterBlogs()">
+    </div> -->
+    <div class="loader-container" *ngIf="loading; else content">
+        <!-- <p>Loading...</p> --><div class="loader"></div>
+    </div>
+   <ng-template #content>
+    <app-blog-card></app-blog-card>
+   </ng-template>
+    
+</div>

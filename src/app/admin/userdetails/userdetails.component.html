@@ -1,0 +1,55 @@
+<div class="container-fluid mr-3">
+  <div class="row justify-content-center" style="margin: 1%;">
+    <div class="col-lg-10">
+      <div class="text-center" >
+        <h4>SEEKERS DETAILS</h4>
+        <div class="row">
+          <div class="col-md-12 col-lg-10">
+            <div class="input-group">
+              <input type="text" [(ngModel)]="searchByName"
+                class="rounded-pill m-2 px-4 py-3 w-100 shadow-lg border-0 custom-outline" placeholder="Search By Name">
+            </div>
+          </div>
+          <div class="col-md-12 col-lg-2">
+            <button type="button" class="btn rounded-pill m-2 px-4 py-3 shadow-lg mx-1 findjobbtn"
+              (click)="performSearchAndFetchJobs()">Search Users</button>
+          </div>
+        </div>
+        <div class="table-responsive mt-3">
+          <table class="table table-striped custom-table">
+            <thead>
+              <tr style="background-color: rgb(143, 236, 143);">
+                <th>Name</th>
+                <th>Phone</th>
+                <th>Email ID</th>
+                <th>Notification</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let user of data" style="background-color: rgb(216, 252, 216);">
+                <td>{{ user.userFirstName }} {{ user.userLastName }}</td>
+                <td><a href="tel:{{ user.userphone }}">{{ user.userphone }}</a></td>
+                <td><a href="mailto:{{ user.userName }}">{{ user.userName }}</a></td>
+                <td>
+                  <button class="btn custom-btn rounded-pill findjobbtn" 
+                   (click)="sendNotification(user.uid)">Send Notification</button>
+                </td>
+                <td>
+                  <!-- <button type="button" class="btn" style="background-color: #1e2e5c; color: white;">Info</button> -->
+                  &nbsp;<button type="button" class="btn btn-secondary " (click)="toggleUserActivation(user.uid)">
+                    {{ user.accdeactivate ? 'Activate' : 'Deactivate' }}
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <!-- <button *ngIf=" currentPage!==1" class="previous-button" (click)="loadPreviousPage()">< Previous</button>
+        <button *ngIf="currentPage * itemsPerPage < data.length" class="load-more-button" (click)="loadNextPage()">Next ></button> -->
+        <button [disabled]="currentPage===1" class="previous-button" (click)="onPageChange(currentPage-1)">< Previous</button>
+        <button [disabled]="currentPage === totalPages" class="load-more-button" (click)="onPageChange(currentPage+1)">Next ></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,124 @@
+<div class="container-fluid">
+    <div *ngIf="loading" class="d-flex justify-content-center mt-4 mb-4">
+        <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+
+    <div *ngIf="companyDetails" class="row justify-content-center mb-4">
+        <div class="col-lg-8 col-md-10 col-sm-12">
+            <div class="company-details card border rounded shadow">
+                <div class="card-body">
+                    <h1 class="card-text"><strong>{{ companyDetails.empcompany }}</strong></h1>
+                    <p class="card-title mb-4">{{ companyDetails.empfname }} {{ companyDetails.emplname }}</p>
+                    <h2 class="card-text"><strong>Email:</strong> {{ companyDetails.empmailid }}</h2>
+                    <h2 class="card-text"><strong>Location:</strong> {{ companyDetails.empcity }}, {{
+                        companyDetails.empstate }}, {{ companyDetails.empcountry }}</h2>
+                    <h2 class="card-text"><strong>Designation:</strong> {{ companyDetails.designation }}</h2>
+                    <h2 class="card-text"><strong>Contact: </strong> {{ companyDetails.empphone }}</h2>
+                    <div class="mb-3">
+                        <h2 class="card-text"><strong>Description:</strong> </h2>
+                        <h2 class="card-text description-text">{{ companyDetails.descriptionemp }}</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col text-center">
+        <h1>JOBS OFFERED</h1>
+    </div>
+    <div *ngFor="let job of jobs" class="border-2 border rounded-4 p-4 mt-3 jobContain">
+        <div *ngIf="job.numberofopening > 10">
+            <span class="rounded-4 border-0 px-2 py-1" style="background-color: #86efac; color: #166534;">
+                Urgently Hiring
+            </span>
+        </div>
+        <div class="d-flex justify-content-between align-items-center mt-3">
+            <p class="fs-3 fw-bold">{{ job.jobtitle }}</p>
+            <div class="d-flex justify-content-center align-items-center">
+                <div (click)="toggleLikedStatus(job.jobid)">
+                    <div *ngIf="job.saveStatus; else notLiked">
+                        <span class="rounded-circle mx-3 border-0"
+                            [style.background-color]="'#0a194741'"
+                            [style.color]="'black'"
+                            style="padding: 10px 15px;">
+                            <i class="fa-solid fa-bookmark"></i>
+                        </span>
+                    </div>
+                    <ng-template #notLiked>
+                        <span class="rounded-circle mx-3 border-0"
+                            [style.background-color]="'#1e2e5c41'"
+                            style="padding: 10px 15px;">
+                            <i class="fa-regular fa-bookmark"></i>
+                        </span>
+                    </ng-template>
+                </div>
+            </div>
+        </div>
+        <p class="rounded-pill px-2 py-1 mx-2"><i class="fa-solid fa-building"></i>&nbsp;{{ job.companyforthisjob }}
+        </p>
+        <div class="d-flex flex-row justify-content-start align-items-center flex-wrap">
+            <p class="rounded-pill px-2 py-1 mx-2 custom-pills">{{ job.numberofopening }} opening(s)</p>
+            <p class="rounded-pill px-2 py-1 mx-2 custom-pills">{{ job.experience }} Years of Experience</p>
+            <p class="rounded-pill px-2 py-1 mx-2 custom-pills"><i class="fa-solid fa-location-dot"></i>&nbsp;{{
+                job.locationjob }}</p>
+            <p class="rounded-pill px-2 py-1 mx-2 custom-pills"><i class="fa-solid fa-sun"></i>&nbsp;{{ job.jobtype }}
+            </p>
+        </div>
+        <p class="rounded-3 px-2 py-1 mx-2"><i class="fas fa-rupee-sign"></i>.&nbsp;{{ job.payjob }}</p>
+        <div class="accordion accordion-flush" id="job.jobid">
+            <div class="accordion-item mx-1 my-0 rounded-3">
+                <h2 class="accordion-header" id="flush-headingOne">
+                    <button class="accordion-button collapsed custom-font py-2 rounded-pill custom-btn" type="button"
+                        data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false"
+                        aria-controls="flush-collapseOne" (click)="toggleDescriptionVisibility(job)">
+                        Job Description
+                    </button>
+                </h2>
+                <div *ngIf="selectedJob === job" id="flush-collapseOne" class="accordion-collapse collapse show"
+                    aria-labelledby="flush-headingOne" data-bs-parent="#job.jobid">
+                    <div class="accordion-body m-2 px-2 py-2 rounded-3" style="background-color: white;">
+                        <p>{{ job.companyforthisjob }}</p>
+                        <p [innerHTML]="job.descriptiondata"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p class="px-2 py-1 mx-2">Send your resume at <a [href]="'mailto:' + job.empEmail">{{ job.empEmail }}</a> to
+            apply</p>
+        <p class="rounded-3 px-2 py-1 mx-2">
+            <i class="fa-solid fa-calendar-days"></i>&nbsp;&nbsp;{{ job.sendTime | date: 'dd MMMM yyyy' }}
+        </p>
+        <button class="btn custom-btn mt-3 rounded-pill" (click)="applyForJob(job)">Apply</button>
+    </div>
+    <div class="row mt-4" *ngIf="totalPages > 1">
+        <div class="col">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item" [class.disabled]="currentPage === 0">
+                        <button class="btn custom-btn mt-3 rounded-pill" (click)="fetchPrevious()"
+                            [disabled]="currentPage === 0"><i class="fas fa-arrow-left"></i>&nbsp;Previous</button>
+                    </li>
+                    <li class="page-item" [class.disabled]="currentPage === totalPages - 1">
+                        <button class="btn custom-btn mt-3 rounded-pill" (click)="fetchNext()"
+                            [disabled]="currentPage === totalPages - 1">Next <i class="fas fa-arrow-right"></i></button>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <ng-template #noEmployersTemplate>
+        <div class="row">
+            <div class="col">
+                <div class="no-employers-container text-center">
+                    <div class="no-employers-content">
+                        <h1>No job is posted by this company</h1>
+                        <p>Explore other companies and start following to stay updated.</p>
+                        <a routerLink="/dashboarduser/company" class="btn btn-primary">Explore other Companies</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+</div>
