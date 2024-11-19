@@ -1,68 +1,82 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { HeaderdashboardempComponent } from './headerdashboardemp/headerdashboardemp.component';
-import { PostjobComponent } from './postjob/postjob.component';
-import { AlljobsComponent } from './alljobs/alljobs.component';
-import { ProfilemepComponent } from './profilemep/profilemep.component';
-import { EmpmessageComponent } from './empmessage/empmessage.component';
-import { ApplieduserdetailsComponent } from './applieduserdetails/applieduserdetails.component';
-import { UpdateempprofileComponent } from './updateempprofile/updateempprofile.component';
-import { NotificationComponent } from '../dashboarduser/notification/notification.component';
-import { NotificationempComponent } from './notificationemp/notificationemp.component';
-import { VideocallComponent } from './videocall/videocall.component';
-import { UpdatejobComponent } from './updatejob/updatejob.component';
-import { authGuard } from '../auth.guard';
-import { SetQuestionComponent } from './set-question/set-question.component';
-import { DisapprovejobComponent } from './disapprovejob/disapprovejob.component';
-import { UpdatedisjobComponent } from './updatedisjob/updatedisjob.component';
-
-
+import { NgModule } from "@angular/core";
+import { RouterModule, Routes } from "@angular/router";
+import { HeaderdashboardempComponent } from "./headerdashboardemp/headerdashboardemp.component";
+import { PostjobComponent } from "./postjob/postjob.component";
+import { AlljobsComponent } from "./alljobs/alljobs.component";
+import { ProfilemepComponent } from "./profilemep/profilemep.component";
+import { EmpmessageComponent } from "./empmessage/empmessage.component";
+import { ApplieduserdetailsComponent } from "./applieduserdetails/applieduserdetails.component";
+import { UpdateempprofileComponent } from "./updateempprofile/updateempprofile.component";
+import { NotificationComponent } from "../dashboarduser/notification/notification.component";
+import { NotificationempComponent } from "./notificationemp/notificationemp.component";
+import { VideocallComponent } from "./videocall/videocall.component";
+import { UpdatejobComponent } from "./updatejob/updatejob.component";
+import { authGuard } from "../auth.guard";
+import { SetQuestionComponent } from "./set-question/set-question.component";
+import { DisapprovejobComponent } from "./disapprovejob/disapprovejob.component";
+import { UpdatedisjobComponent } from "./updatedisjob/updatedisjob.component";
 
 const routes: Routes = [
   {
-    path: '', component: HeaderdashboardempComponent,
-    canActivate: [authGuard], 
+    path: "",
+    component: HeaderdashboardempComponent,
+    canActivate: [authGuard],
     children: [
       {
-        path: '', component: PostjobComponent
-      }, {
-        path: 'alljobs', component: AlljobsComponent
-      }, {
-        path: 'profilemep', component: ProfilemepComponent
-      }, {
-        path: 'empmessage/:uid', component: EmpmessageComponent
+        path: "",
+        component: PostjobComponent,
       },
       {
-        path: 'applieduserdetails', component: ApplieduserdetailsComponent
+        path: "alljobs",
+        component: AlljobsComponent,
       },
       {
-        path: 'updateempprofile/:empid', component: UpdateempprofileComponent
+        path: "profilemep",
+        component: ProfilemepComponent,
       },
       {
-        path: 'notificationemp', component: NotificationempComponent
+        path: "empmessage/:uid",
+        component: EmpmessageComponent,
       },
-{
-path:'set-question/:jobid',component:SetQuestionComponent
-},
-{
-  path:'disapprovejob',component:DisapprovejobComponent
-  },
+      {
+        path: "applieduserdetails",
+        component: ApplieduserdetailsComponent,
+      },
+      {
+        path: "updateempprofile/:empid",
+        component: UpdateempprofileComponent,
+      },
+      {
+        path: "notificationemp",
+        component: NotificationempComponent,
+      },
+      {
+        path: "set-question/:jobid",
+        component: SetQuestionComponent,
+      },
+      {
+        path: "disapprovejob",
+        component: DisapprovejobComponent,
+      },
 
       {
-        path:'videocall/:uid', component:VideocallComponent
+        path: "videocall/:uid",
+        component: VideocallComponent,
       },
       {
-        path:'updatejob/:jobid',component:UpdatejobComponent
+        path: "updatejob/:jobid",
+        component: UpdatejobComponent,
       },
       {
-        path:'updatedisjob/:jobid',component:UpdatedisjobComponent
-      }
-    ]
-  }
+        path: "updatedisjob/:jobid",
+        component: UpdatedisjobComponent,
+      },
+    ],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class DashboardempRoutingModule { }
+export class DashboardempRoutingModule {}
