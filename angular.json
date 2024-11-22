@@ -23,12 +23,12 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
-               "src/robots.txt",
-              "src/firebase-messaging-sw.js", 
-              "src/manifest.json" 
+              "src/robots.txt",
+              "src/firebase-messaging-sw.js",
+              "src/manifest.json"
             ],
-                        "styles": [
-                          "@angular/material/prebuilt-themes/indigo-pink.css",
+            "styles": [
+              "@angular/material/prebuilt-themes/indigo-pink.css",
               "node_modules/slick-carousel/slick/slick.css",
               "node_modules/slick-carousel/slick/slick-theme.css",
               "src/styles.css"
@@ -99,9 +99,7 @@
               "@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.css"
             ],
-            "scripts": [
-              
-            ]
+            "scripts": []
           }
         }
       }
