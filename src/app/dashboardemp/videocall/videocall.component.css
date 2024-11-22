@@ -1,76 +1,155 @@
-/* Additional CSS styles for your UI */
+/* General Container Styling */
+.video-call-container {
+  padding: 20px;
+  background-color: #f8f9fa;
+}
+
+/* Video Area Styles */
+.video-area {
+  position: relative;
+}
+
+/* Video containers */
+.video-container {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+/* Remote Video Element */
+.remote-video {
+  width: 100%;
+  max-height: 80vh;
+  background-color: black;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+/* Local Video Element */
 .local-video {
-  width: 100%; /* Make the local video full-width */
-  max-width: 100%;
+  width: 260px;
+  height: 146px;
   border: 1px solid #ccc;
   background-color: #000;
   border-radius: 8px;
-  overflow: hidden;
-  margin-bottom: 20px;
-  /* Add any other styles for the local video container */
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
 }
 
-/* Styles for the "Full Screen" button */
+/* Button Styles */
+.custom-btn {
+  background-color: #1e2e5c;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 30px;
+}
+
 .full-screen-button {
   background-color: #007bff;
-  color: #fff;
+  color: white;
+  padding: 10px 20px;
   border: none;
   cursor: pointer;
-  padding: 10px 20px;
 }
 
-/* Styles for chat panel scrolling */
+/* Control Panel Styles */
+.controls-area {
+  padding: 20px;
+}
+
+.top-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.meeting-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.meeting-status {
+  font-size: 1.2rem;
+  color: green;
+}
+
+.bottom-controls {
+  margin-top: 30px;
+}
+
+/* Chat Panel Styling */
 .chat-container {
-  height: 400px; /* Set a fixed height for scrolling */
+  height: 300px;
   overflow-y: auto;
-  border: 1px solid #ccc;
+  background-color: white;
   border-radius: 8px;
-  background-color: #fff;
   padding: 10px;
   margin-bottom: 10px;
 }
 
-/* Styles for chat messages */
 .message {
   margin-bottom: 10px;
   padding: 10px;
   border-radius: 8px;
 }
 
-/* Styles for sent and received messages */
 .sent {
   background-color: #007bff;
-  color: #fff;
+  color: white;
   text-align: right;
 }
 
 .received {
   background-color: #f4f4f4;
   text-align: left;
-  
 }
 
-.video-container {
-  position: relative;
-  
-}
-
-
-
-.video-container:nth-child(2) {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-}
-
-.custom-btn {
-  color: white;
-  background-color: #1e2e5c;
-}
 #endCallButtonContainer {
   position: fixed;
-  bottom: 20px; /* Adjust as needed */
+  bottom: 30px; /* Increased spacing from the bottom */
   left: 50%;
   transform: translateX(-50%);
-  z-index: 9999; /* Ensure the button is on top of other content */
+  z-index: 9999;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.meet-controls-bar {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.meet-controls-bar button {
+  width: 30%;
+}
+
+/* Responsive Design for Mobile */
+@media (max-width: 768px) {
+  .video-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .local-video {
+    position: relative;
+    width: 80%;
+    height: auto;
+  }
+
+  .controls-area {
+    margin-top: 20px;
+  }
+
+  .chat-container {
+    height: 250px;
+  }
+
+  .participants-list {
+    margin-top: 15px;
+  }
 }

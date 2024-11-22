@@ -251,7 +251,7 @@ export class VideocallComponent implements OnInit {
 
       this.room_id = "";
       // User clicked OK, navigate to the specific URL
-      this.router.navigate(["dashboardemp/empmessage"]); // Replace '/specific-url' with your desired URL
+      this.router.navigate(["dashboardemp/"]); // Replace '/specific-url' with your desired URL
     } else {
       // User clicked Cancel, do nothing or handle accordingly
     }
