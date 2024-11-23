@@ -24,7 +24,7 @@
             <video #localVideo class="local-video" muted autoplay></video>
           </div>
 
-          <div class="meet-controls-bar">
+          <!-- <div class="meet-controls-bar">
             <button class="btn custom-btn rounded-pill" (click)="toggleAudio()">
               {{ audioMuted ? 'Unmute Audio' : 'Mute Audio' }}
             </button>
@@ -32,7 +32,19 @@
               {{ videoMuted ? 'Unmute Video' : 'Mute Video' }}
             </button>
             <button class="btn custom-btn rounded-pill" (click)="startScreenShare()">Screen Share</button>
+          </div> -->
+          <div class="meet-controls-bar">
+            <button class="btn custom-btn rounded-pill" (click)="toggleAudio()">
+              <i [class]="audioMuted ? 'fa fa-microphone-slash' : 'fa fa-microphone'"></i>
+            </button>
+            <button class="btn custom-btn rounded-pill" (click)="toggleVideo()">
+              <i [class]="videoMuted ? 'fa fa-video-slash' : 'fa fa-video-camera'"></i>
+            </button>
+            <button class="btn custom-btn rounded-pill" (click)="startScreenShare()">
+              <i class="fa fa-desktop"></i>
+            </button>
           </div>
+          
 
           <div class="meet-controls-container text-center" *ngIf="endCall" >
             <div class="meet-controls-bar">
@@ -46,19 +58,9 @@
 
     <!-- Control Area (Sidebar) -->
     <div class="col-lg-4 col-md-12 controls-area">
-      <div class="top-controls">
-        <h1 class="meeting-title">Meeting Title</h1>
-        <div class="meeting-status">Connected</div>
-      </div>
-
+ 
       <div class="bottom-controls">
-        <div class="participants-list">
-          <h2>Participants</h2>
-          <ul class="list-group">
-            <li class="list-group-item">Participant 1</li>
-            <li class="list-group-item">Participant 2</li>
-          </ul>
-        </div>
+
 
         <div class="chat-panel">
           <h2>Chat</h2>

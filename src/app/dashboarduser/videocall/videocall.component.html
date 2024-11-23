@@ -36,10 +36,21 @@
         </div>
 
         <!-- Meet Controls -->
-        <div class="meet-controls-bar">
+        <!-- <div class="meet-controls-bar">
           <button (click)="toggleAudio()">{{ isAudioMuted ? 'Unmute Audio' : 'Mute Audio' }}</button>
           <button (click)="toggleVideo()">{{ isVideoMuted ? 'Unmute Video' : 'Mute Video' }}</button>
           <button class="btn custom-btn rounded-pill" (click)="startScreenShare()">Screen Share</button>
+        </div> -->
+        <div class="meet-controls-bar">
+          <button class="btn custom-btn rounded-pill" (click)="toggleAudio()">
+            <i [class]="isAudioMuted ? 'fa fa-microphone-slash' : 'fa fa-microphone'"></i>
+          </button>
+          <button class="btn custom-btn rounded-pill" (click)="toggleVideo()">
+            <i [class]="isVideoMuted ? 'fa fa-video-slash' : 'fa fa-video-camera'"></i>
+          </button>
+          <button class="btn custom-btn rounded-pill" (click)="startScreenShare()">
+            <i class="fa fa-desktop"></i>
+          </button>
         </div>
 
         <!-- End Call Button -->
